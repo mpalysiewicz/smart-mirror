@@ -119,14 +119,10 @@ else
     exit;
 fi
 
-# Generate config and install dependencies
-cd smart-mirror  || exit
-printf "%s\n${blu}generating config template...${end}\n"
-cp config.example.js config.js
-
 # Install smart-mirror dependencies
 printf "%s\n${blu}Installing smart-mirror dependencies...${end}\n"
 printf "%s${yel}This may take a while. Go grab a beer :)${end}\n"
+cd smart-mirror  || exit
 if npm install; then 
 	printf "%s${grn}Dependency installation complete!${end}\n"
 else
@@ -159,13 +155,13 @@ cat << "EOF"
 
         |        The smart-mirror is now installed!
        / \       
-      / _ \      Once you fill out your config you can start the mirror with:
-     |.o '.|     > npm start
-     |'._.'|     Or if you are running over SSH:
-     |     |     > DISPLAY=:0 npm start
-   ,'|  |  |`.   
-  /  |  |  |  \  To lean more, check out the documentation at:
-  |,-'--|--'-.|  http://docs.smart-mirror.io
+      / _ \      For configuration instructions, check out the documentation at:
+     |.o '.|     http://docs.smart-mirror.io
+     |'._.'|     
+     |     |     To start your mirror you can run:
+   ,'|  |  |`.   > npm start
+  /  |  |  |  \  Or if you are running over SSH:
+  |,-'--|--'-.|  > DISPLAY=:0 npm start
   
 EOF
 # ASCII art found on http://textart.io/
