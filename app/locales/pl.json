@@ -1,0 +1,218 @@
+{
+    "home" : {
+        "commands" : "Powiedz \"Co mogę powiedzieć?\" by zobaczyć listę komend..."
+    },
+    "traffic" : {
+        "time_to" : "Czas do {{name}}: "
+    },
+    "reminders": {
+        "empty": "Lista jest pusta."
+    },
+    "timer": {
+      "one": "One",
+      "minute": "Minuta(y)?",
+      "second": "Sekunda(y)?"
+    },
+    "lights": {
+        "colors": {
+            "red": "czerwony",
+            "dark_green": "ciemnozielony",
+            "green": "zielony",
+            "blue": "niebieski",
+            "yellow": "żółty",
+            "orange":  "pomarańczowy",
+            "pink": "różowy",
+            "purple": "purpurowy",
+            "white": "biały",
+            "movie": "film",
+            "colorloop": "pętla kolorów",
+            "stop": "zatrzymaj"
+        },
+        "intensity": {
+            "increase": "powiększ",
+            "decrease": "pomniejsz",
+            "max": "maksymalna",
+            "half": "połowa",
+            "quarter": "ćwierć",
+            "threequarter": "trzy czwarte"
+        },
+        "action": {
+            "on": "włącz",
+            "off": "wyłącz",
+            "nightmode": "tryb nocny",
+            "reset": "resetuj"
+        }
+    },
+    "faceRecognition": {
+        "showyourface": "Pokaż się",
+        "idontknowyou": "Nieznajomy"
+    },
+    "commands": {
+        "title" : "Dostępne komendy",
+        "list": {
+            "text": "Co mogę powiedzieć?",
+            "voice": "Co mogę powiedzieć",
+            "description": "Pokazuje listę komend głosowych dostępnych dla Ciebie."
+        },
+        "home": {
+            "text": "Ekran główny",
+            "voice": "Ekran główny",
+            "description": "Zabiera Cię spowrotem na ekran główny"
+        },
+        "sleep": {
+            "text": "Uśpij",
+            "voice": "Uśpij",
+            "description": "Wyłącza ekran lustra"
+        },
+        "debug": {
+            "text": "Pokaż informacje diagnostyczne",
+            "voice": "Pokaż informacje diagnostyczne",
+            "description": "Pokazuje informacje diagnostyczne"
+        },
+        "map_show": {
+            "text": "Pokaż mapę",
+            "voice": "Pokaż mapę",
+            "description": "Pokazuje mapę dla Twojej bieżącej lokalizacji."
+        },
+        "map_location": {
+            "text": "Pakaż mi mapę ________",
+            "voice": "Pokaż (mi) mapę *location",
+            "description": "Pokazuje mapę zadanej lokalizacji."
+        },
+        "map_zoom_in": {
+            "text": "Przybliż",
+            "voice": "(mapa) przybliż",
+            "description": "Przybliża bieżącą mapę"
+        },
+        "map_zoom_out": {
+            "text": "Oddal",
+            "voice": "(mapa) oddal",
+            "description": "Oddala bieżącą mapę"
+        },
+        "map_zoom_point": {
+            "text": "Przybliż do ________",
+            "voice": "(mapa) przybliż (do) *value",
+            "description": "Przybliża do żądanego punktu"
+        },
+        "map_zoom_reset": {
+            "text": "Kasuj przybliżenie",
+            "voice": "(mapa) kasuj przybliżenie",
+            "description": "Wraca do domyślnej skali mapy"
+        },
+        "video_search": {
+            "text": "Wyświetl mi ________",
+            "voice": "Wyświetl (mi) (film) (o) *query",
+            "description": "Wyświetla znaleziony film pasujący do zapytania."
+        },
+        "video_stop": {
+            "text": "Zatrzymaj film",
+            "voice": "Zatrzymaj (ten) film",
+            "description": "Zatrzymuje wyświetlany film."
+        },
+        "image_giphy": {
+            "text": "Obrazek ________",
+            "voice": "Obrazek *img",
+            "description": "Pokazuje obrazek z serwisu giphy"
+        },
+        "image_comic": {
+            "text": "Show xkcd",
+            "voice": "Show xkcd",
+            "description": "Shows the most recent xkcd comic."
+        },
+        "image_comic_dilbert": {
+            "text": "Pokaż komiks z Dilbertem",
+            "voice": "Pokaż (komiks) Dilberta",
+            "description": "Wyświetla jeden z dostępnych komiksów z Dilbertem."
+        },
+        "reminder_insert": {
+            "text": "Przypomnij mi o ________",
+            "voice": "Przypomnij (mi) o *task",
+            "description": "Dodaje zadanie do listy z przypomnieniami."
+        },
+        "reminder_clear": {
+            "text": "Wyczyść przypomnienia",
+            "voice": "Wyczyść przypomnienia",
+            "description": "Usuwa listę z przypomnieniami."
+        },
+        "reminder_show": {
+            "text": "Pokaż przypomnienia",
+            "voice": "Pokaż (mi) przypomnienia",
+            "description": "Wyświetla listę z przypomnieniami"
+        },
+        "time_show": {
+            "text": "Która godzina",
+            "voice": "Która (jest) godzina",
+            "description": "Pokazuje bieżący czas"
+        },
+        "timer_start": {
+            "text": "Odliczanie od ________",
+            "voice": "(zacznij) odliczanie (od) *duration",
+            "description": "Starts a timer."
+        },
+        "timer_show": {
+            "text": "Pokaż odliczanie",
+            "voice": "Pokaż odliczanie",
+            "description": "Wyświetla odliczanie."
+        },
+        "timer_stop": {
+            "text": "Zatrzymaj odliczanie",
+            "voice": "Zatrzymaj odliczanie",
+            "description": "Zatrzymuje odliczanie."
+        },
+        "timer_resume": {
+            "text": "Wznów odliczanie",
+            "voice": "Wznów odliczanie",
+            "description": "Wznawia odliczanie"
+        },
+        "add_person": {
+            "text": "Dodaj osobę ________",
+            "voice": "Dodaj osobę *name",
+            "description": "Dodaje osobę"
+        },
+        "remove_person": {
+            "text": "Usuń osobę ________",
+            "voice": "Usuń osobę *name",
+            "description": "Usuwa osobę"
+        },
+        "remove_me": {
+            "text": "Usuń mnie",
+            "voice": "Usuń mnie",
+            "description": "Usuwa mnie"
+        },
+        "show_camera": {
+            "text": "Pokaż kamerę",
+            "voice": "Pokaż kamerę",
+            "description": "Pokazuje kamerę"
+        },
+        "sc_play": {
+            "text": "SoundCloud play ________",
+            "voice": "SoundCloud play *query",
+            "description": "Play a song on SoundCloud"
+        },
+        "sc_pause": {
+            "text": "SoundCloud pause/stop",
+            "voice": "SoundCloud (pause)(post)(stop)(stock)",
+            "description": "Stop/pause SoundCoud playback"
+        },
+        "sc_resume": {
+            "text": "SoundCloud play",
+            "voice": "SoundCloud (play)(resume)",
+            "description": "Resumes playback"
+        },
+        "sc_replay": {
+            "text": "SoundCloud replay",
+            "voice": "SoundCloud replay",
+            "description": "Replays the current song on SoundCloud"
+        },
+        "light_action": {
+            "text": "(action) światło (w) (state)",
+            "voice": "*action światło (w):state",
+            "description": "*action światło (w) :state"
+        },
+        "show_remoteQR":{
+            "text": "Wyświetl link dostępu",
+            "voice": "Show remote (QR code) (QR) (link)",
+            "description": "Pokazuje lokalne IP dla aplikacji
+        }
+    }
+}
