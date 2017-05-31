@@ -212,7 +212,7 @@
         "show_remoteQR":{
             "text": "Wyświetl link dostępu",
             "voice": "Show remote (QR code) (QR) (link)",
-            "description": "Pokazuje lokalne IP dla aplikacji
+            "description": "Pokazuje lokalne IP dla aplikacji"
         }
     }
 }
