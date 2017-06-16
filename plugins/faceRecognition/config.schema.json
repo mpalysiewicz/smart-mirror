@@ -1,0 +1,30 @@
+{
+    "schema": {
+        "faceRecognition": {
+            "type": "object",
+            "title": "Face Recognition Settings",
+            "properties": {
+                "emotionKey": {
+                    "type": "string",
+                    "title": "emotion Key"
+                },
+                "faceKey": {
+                    "type": "string",
+                    "title": "face Key"
+                },
+                "faceListId": {
+                    "type": "string",
+                    "title": "Face list id"
+                }               
+            }
+        }
+    },
+    "form": [
+        {
+            "type": "fieldset",
+            "key": "faceRecognition",
+            "expandable": true,
+            "order":0
+        }
+    ]
+}

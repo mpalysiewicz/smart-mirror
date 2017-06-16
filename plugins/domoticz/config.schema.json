@@ -1,0 +1,47 @@
+{
+  "schema": {
+    "domoticzService": {
+      "type": "object",
+            "title": "Domoticz Settings",
+            "properties": {
+              "address": {
+                "type": "string",
+                "title": "Addres IP"
+              },
+              "sensors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "title": "Domoticz Service",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "title": "id"
+                    }
+                  }
+                }
+              }
+            }
+    }
+  },
+  "form": [
+    {
+      "type":"fieldset",
+      "title":"Domoticz Settings",
+      "expandable":true,
+      "order":0,
+      "items": [
+      "domoticzService.address",
+    {
+      "type": "tabarray",
+      "items": {
+        "type": "section",
+        "items": [
+          "domoticzService.sensors[].id"
+        ]
+      }
+    }
+  ]
+}
+]
+}
