@@ -1,0 +1,15 @@
+<div ng-controller="Domoticz  ">
+        <div ng-show="!sensors.error" class="sensors-information">
+          <ul class="calendar">
+              <li ng-repeat="sensor in sensors">
+                  <div class="sensorList">
+                        <span class="sensorName" ng-bind="sensor.name">Salon Temperature</span>
+                        <div class="sensorvalue">
+                        <span ng-bind="sensor.data.value">23</span>
+                        <span ng-bind="sensor.data.unit">C</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+</div>
