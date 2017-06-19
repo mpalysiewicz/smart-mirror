@@ -1,7 +1,7 @@
 <div ng-controller="Domoticz  ">
-        <div ng-show="!sensors.error" class="sensors-information">
+        <div ng-show="!domoticz.error" class="domoticz-information">
           <ul class="calendar">
-              <li ng-repeat="sensor in sensors">
+              <li ng-repeat="domoticz in domoticzs">
                   <div class="sensorList">
                         <span class="sensorName" ng-bind="sensor.name">Salon Temperature</span>
                         <div class="sensorvalue">

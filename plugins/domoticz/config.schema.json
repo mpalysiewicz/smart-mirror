@@ -8,6 +8,10 @@
                 "type": "string",
                 "title": "Addres IP"
               },
+              "port": {
+                "type": "string",
+                "title": "Port"
+              },
               "sensors": {
                 "type": "array",
                 "items": {
@@ -32,6 +36,7 @@
       "order":0,
       "items": [
       "domoticzService.address",
+      "domoticzService.port",
     {
       "type": "tabarray",
       "items": {
