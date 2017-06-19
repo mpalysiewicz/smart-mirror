@@ -16,8 +16,9 @@ function DomoticzService($http, $q){
 
         service.init = function(){
             var promises = [];
-            angular.forEach(config.sensorService.sensors, function(sensor) {
-                promises.push($http.get(config.sensorService.address+sensor.id+'/lastValue'));
+            angular.forEach(config.domoticzService.sensors, function(sensor) {
+              console.log('URL', config.domoticzService.address+':'+config.domoticzService.port+'/json.htm?type=devices&rid='+sensor.id);
+                promises.push($http.get(config.domoticzService.address+':'+config.domoticzService.port+'/json.htm?type=devices&rid='+sensor.id));
             });
 
             return $q.all(promises).then(function(response) {
@@ -25,40 +26,23 @@ function DomoticzService($http, $q){
                 for (var i=0; i < response.length; i++){
 
                     if(response[i].data.id !== undefined){
-                        response[i].data.name = getSensorById(config.sensorService.sensors, response[i].data.id).name;
+                        response[i].data.name = getSensorById(config.domoticzService.sensors, response[i].data.id).name;
                         service.sensorList.push(response[i].data);
                     }
                 }
             });
         }
 
+        service.refreshSensors = function() {
+            return service.init().then(function(entries) {
+                return entries;
+            });
+        };
 
+        service.getSensorsData = function() {
+            return service.sensorList;
+        };
 
-        service.updateDomoticz = function() {
-		var i = 0;
-		for (var c in config.domoticz.sensors) {
-			console.log("this is c: " + c);
-			var sensor = config.domoticz.sensors[c];
-			var url = this.config.apiBase + ":" + this.config.apiPort + "/json.htm?type=devices&rid="  + sensor.idx;
-			var self = this;
-
-			var domoRequest = new XMLHttpRequest();
-			domoRequest.open("GET", url, true);
-			domoRequest.onreadystatechange = function() {
-				if (this.readyState === 4) {
-					if (this.status === 200) {
-						self.processJson(JSON.parse(this.response));
-						console.log("Loaded data");
-					} else {
-						Log.error(self.name + ": Could not load data.");
-						console.log("Did not load data");
-					}
-				}
-			};
-			domoRequest.send();
-			i++;
-		}
-	}
 
 		return service;
     }

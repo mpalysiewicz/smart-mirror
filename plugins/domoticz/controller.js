@@ -1,16 +1,19 @@
-function Sensors($scope, $http, $interval, SensorsService) {
+function Domoticz($scope, $http, $interval, DomoticzService) {
 
-    var getSensorsData = function(){
-        SensorsService.getSensorsData().then(function () {
-            $scope.sensors = SensorsService.getFutureEvents();
-        }, function (error) {
-            console.log(error);
-        });
-    }
+  var refreshSensors = function() {
+      $scope.domoticz = [];
+                  console.log ("Refreshing Sensors");
+                  DomoticzService.refreshSensors().then(function() {
+                    var sensors = DomoticzService.getSensorsData();
+                    if(sensors.length > 0)
+                      $scope.domoticz = sensors;
+                    console.log($scope.domoticz);
+                  });
+              };
 
-    getSensorsData();
-    $interval(getSensorsData, config.sensorService.refreshInterval * 60000 || 1800000)
+refreshSensors();
+$interval(refreshSensors , 10 * 60000 || 900000)
 }
 
 angular.module('SmartMirror')
-    .controller('Sensors', Sensors);
+    .controller('Domoticz', Domoticz);

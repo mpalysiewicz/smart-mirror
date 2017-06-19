@@ -1,15 +1,18 @@
-function Sensors($scope, $http, $interval, SensorsServiceś) {
+function Sensors($scope, $http, $interval, SensorsService) {
 
-    var getSensorsData = function(){
-        SensorsService.getSensorsData().then(function () {
-            $scope.sensors = SensorsService.getFutureEvents();
-        }, function (error) {
-            console.log(error);
-        });
-    }
+      var refreshSensors = function() {
+          $scope.sensors = [];
+                      console.log ("Refreshing Sensors");
+                      SensorsService.refreshSensors().then(function() {
+                        var sensors = SensorsService.getSensorsData();
+                        if(sensors.length > 0)
+                          $scope.sensors = sensors;
+                        console.log($scope.sensors);
+                      });
+                  };
 
-    getSensorsData();
-    $interval(getSensorsData, config.sensorService.refreshInterval * 60000 || 1800000)
+    refreshSensors();
+    $interval(refreshSensors , 10 * 60000 || 900000)
 }
 
 angular.module('SmartMirror')
