@@ -199,6 +199,26 @@
             "voice": "SoundCloud (play)(resume)",
             "description": "Resumes playback"
         },
+        "add_person": {
+            "text": "Dodaj osobę ________",
+            "voice": "Dodaj osobę *name",
+            "description": "Dodaje osobę"
+        },
+        "remove_person": {
+            "text": "Usuń osobę ________",
+            "voice": "Usuń osobę *name",
+            "description": "Usuwa osobę"
+        },
+        "remove_me": {
+            "text": "Usuń mnie",
+            "voice": "Usuń mnie",
+            "description": "Usuwa mnie"
+        },
+        "show_camera": {
+            "text": "Pokaż kamerę",
+            "voice": "Pokaż kamerę",
+            "description": "Pokazuje kamerę"
+        },
         "sc_replay": {
             "text": "SoundCloud replay",
             "voice": "SoundCloud replay",

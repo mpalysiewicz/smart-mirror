@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     function FaceRecognitionService($http, $translate) {
@@ -6,16 +6,16 @@
         service.faceId = null;
         service.isInitialized = false;
 
-        service.init = function() {
-            if(service.isInitialized) {
-                return new Promise(function(success, failure){
+        service.init = function () {
+            if (service.isInitialized) {
+                return new Promise(function (success, failure) {
                     success();
                 })
             }
 
             var video = document.getElementById('video');
-            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
                     video.src = window.URL.createObjectURL(stream);
                     video.play();
                 });
@@ -23,21 +23,12 @@
 
             service.isInitialized = true;
 
-            return new Promise(function(success, failure){
+            return new Promise(function (success, failure) {
                 setTimeout(success, 2000);
             })
-			
-			            var refreshFaceRecognition = function() {
-                console.log ("Refreshing Face Recognition");
-                FaceRecognitionService.recognizePerson().then(function(personName) {
-                    $scope.personName = personName;
-                });
-            };
-
-            registerRefreshInterval(refreshFaceRecognition, 1.0/60.0*10);
         };
 
-        service.recognizePerson = function() {
+        service.recognizePerson = function () {
             return this.init().
                 then(takeSnapshot).
                 then(detectFace).
@@ -45,26 +36,26 @@
                 then(getFaceName);
         };
 
-        service.recognizeEmotion = function() {
+        service.recognizeEmotion = function () {
             return this.init().
                 then(takeSnapshot).
                 then(detectEmotion).
                 then(getEmotionName);
         };
 
-        service.addPerson = function(name) {
+        service.addPerson = function (name) {
             return this.init().
                 then(takeSnapshot).
-                then(function(snapshot) { return addFaceToFaceList(snapshot, name); });
+                then(function (snapshot) { return addFaceToFaceList(snapshot, name); });
         };
 
-        service.removePerson = function(name) {
+        service.removePerson = function (name) {
             return getFacesInFaceList().
-                then(function(faceIds) {return searchForFaceByName(faceIds, name)}).
+                then(function (faceIds) { return searchForFaceByName(faceIds, name) }).
                 then(removeFace);
         };
 
-        service.removeMe = function() {
+        service.removeMe = function () {
             return this.init().
                 then(takeSnapshot).
                 then(detectFace).
@@ -72,7 +63,7 @@
                 then(removeFace);
         };
 
-        function takeSnapshot(){
+        function takeSnapshot() {
             var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
             var video = document.getElementById('video');
@@ -84,7 +75,7 @@
 
         function detectFace(snapshot) {
             return $http({
-                url: 'https://api.projectoxford.ai/face/v1.0/detect',
+                url: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect',
                 method: 'post',
                 data: snapshot,
                 params: {
@@ -96,7 +87,7 @@
                 }
             }).then(function mySucces(response) {
                 console.log(response);
-                if(response.data.length == 0)
+                if (response.data.length == 0)
                     return null;
                 return response.data[0].faceId;
             }, function myError(response) {
@@ -106,7 +97,7 @@
 
         function detectEmotion(snapshot) {
             return $http({
-                url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
+                url: 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
                 method: 'post',
                 data: snapshot,
                 headers: {
@@ -126,9 +117,8 @@
 
             var m1 = 0, m2 = 0;
             var i1 = 0, i2 = 0;
-            for(var i in  scores) {
-                if(scores[i] > m1)
-                {
+            for (var i in scores) {
+                if (scores[i] > m1) {
                     m2 = m1;
                     i2 = i1;
                     m1 = scores[i];
@@ -139,20 +129,20 @@
             console.log(i1 + ' ' + m1);
             console.log(i2 + ' ' + m2);
 
-            if(m2 < 0.1)
+            if (m2 < 0.1)
                 return i1;
             else
                 return i1 + ' ' + i2;
         };
 
         function findSimilarFace(faceId) {
-            if(faceId === null)
+            if (faceId === null)
                 return undefined;
 
             return $http({
-                url: 'https://api.projectoxford.ai/face/v1.0/findsimilars',
+                url: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/findsimilars',
                 method: 'post',
-                data: { 
+                data: {
                     faceListId: config.faceRecognition.faceListId,
                     faceId: faceId,
                     maxNumOfCandidatesReturned: 1
@@ -163,7 +153,7 @@
                 }
             }).then(function mySucces(response) {
                 console.log(response);
-                if(response.data.length == 0)
+                if (response.data.length == 0)
                     return null;
                 return response.data[0].persistedFaceId;
             }, function myError(response) {
@@ -172,19 +162,19 @@
         };
 
         function getFaceName(persistedFaceId) {
-            if(persistedFaceId === undefined)
+            if (persistedFaceId === undefined)
                 return $translate.instant('faceRecognition.showyourface');
-            if(persistedFaceId === null)
+            if (persistedFaceId === null)
                 return $translate.instant('faceRecognition.idontknowyou');
             return getFacesInFaceList().
-                then(function(faceIds) {
+                then(function (faceIds) {
                     return searchForFaceByFaceId(faceIds, persistedFaceId)
                 });
         };
 
         function getFacesInFaceList() {
             return $http({
-                url: 'https://api.projectoxford.ai/face/v1.0/facelists/' + config.faceRecognition.faceListId,
+                url: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/facelists/' + config.faceRecognition.faceListId,
                 headers: {
                     "Ocp-Apim-Subscription-Key": config.faceRecognition.faceKey
                 }
@@ -197,8 +187,8 @@
         };
 
         function searchForFaceByFaceId(faceIds, persistedFaceId) {
-            for(var i in faceIds) {
-                if(faceIds[i].persistedFaceId === persistedFaceId) {
+            for (var i in faceIds) {
+                if (faceIds[i].persistedFaceId === persistedFaceId) {
                     return faceIds[i].userData;
                 }
             }
@@ -206,8 +196,8 @@
         };
 
         function searchForFaceByName(faceIds, name) {
-            for(var i in faceIds) {
-                if(faceIds[i].userData === name) {
+            for (var i in faceIds) {
+                if (faceIds[i].userData === name) {
                     return faceIds[i].persistedFaceId;
                 }
             }
@@ -216,7 +206,7 @@
 
         function addFaceToFaceList(snapshot, name) {
             return $http({
-                url: 'https://api.projectoxford.ai/face/v1.0/facelists/'+config.faceRecognition.faceListId+'/persistedFaces',
+                url: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/facelists/' + config.faceRecognition.faceListId + '/persistedFaces',
                 method: 'post',
                 data: snapshot,
                 params: {
@@ -235,11 +225,11 @@
         };
 
         function removeFace(persistedFaceId) {
-            if(persistedFaceId == null)
+            if (persistedFaceId == null)
                 return;
 
             return $http({
-                url: 'https://api.projectoxford.ai/face/v1.0/facelists/'+config.faceRecognition.faceListId+'/persistedFaces/'+persistedFaceId,
+                url: 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/facelists/' + config.faceRecognition.faceListId + '/persistedFaces/' + persistedFaceId,
                 method: 'delete',
                 headers: {
                     "Ocp-Apim-Subscription-Key": config.faceRecognition.faceKey
@@ -253,6 +243,6 @@
 
         return service;
     }
-
-    angular.module('SmartMirror').factory('FaceRecognitionService', FaceRecognitionService);
-}(window.annyang));
+    angular.module('SmartMirror')
+        .factory('FaceRecognitionService', FaceRecognitionService);
+}());

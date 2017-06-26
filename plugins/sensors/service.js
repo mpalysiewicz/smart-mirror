@@ -23,8 +23,6 @@ function SensorsService($http, $q){
             return $q.all(promises).then(function(response) {
                 service.sensorList = [];
                 for (var i=0; i < response.length; i++){
-                    console.log("response 1", response[i].data.id);
-
                     if(response[i].data.id !== "undefined"){
                         response[i].data.name = getSensorById(config.sensorService.sensors, response[i].data.id).name;
                         service.sensorList.push(response[i].data);
