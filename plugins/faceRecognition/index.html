@@ -1,0 +1,10 @@
+<div ng-controller="Face">
+	  <h2 ng-bind="personName"></h2>
+	    <div class=" animate-grow" ng-show="focus == 'blank'">
+
+      </div>
+			<div class="contents-box video-container animate-grow" ng-show="focus == 'camera'">
+				<video id="video" width="640" height="480" autoplay></video>
+				<canvas style="display: none" id="canvas" width="640" height="480"></canvas>
+			</div>
+</div>

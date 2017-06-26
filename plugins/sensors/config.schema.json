@@ -1,0 +1,52 @@
+{
+  "schema": {
+    "sensorService": {
+      "type": "object",
+            "title": "Sensors Settings",
+            "properties": {
+              "address": {
+                "type": "string",
+                "title": "Addres IP"
+              },
+              "sensors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "title": "Sensors Service",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "title": "id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "title": "name"
+                    }
+                  }
+                }
+              }
+            }
+    }
+  },
+  "form": [
+    {
+      "type":"fieldset",
+      "title":"Sensors Settings",
+      "expandable":true,
+      "order":0,
+      "items": [
+      "sensorService.address",
+    {
+      "type": "tabarray",
+      "items": {
+        "type": "section",
+        "items": [
+          "sensorService.sensors[].id",
+          "sensorService.sensors[].name"
+        ]
+      }
+    }
+  ]
+}
+]
+}
