@@ -3,13 +3,13 @@
 
 function DomoticzService($http, $q){
         var service = {};
-        service.sensorList = [];
+        service.domoticzSensorList = [];
 
         function getSensorById(sensors, id) {
             for (var i=0; i < sensors.length; i++){
 
                 if(sensors[i].id == id){
-                    return config.sensorService.sensors[i];}
+                    return config.domoticzService.sensors[i];}
             }
             return null;
         }
@@ -22,25 +22,29 @@ function DomoticzService($http, $q){
             });
 
             return $q.all(promises).then(function(response) {
-                service.sensorList = [];
+              console.log('length', response.length);
+                service.domoticzSensorList = [];
                 for (var i=0; i < response.length; i++){
-
+                    console.log('responseDomoticz1', response[i].data.id);
                     if(response[i].data.id !== undefined){
+                      console.log('responseDomoticz2', response[i].data.name);
                         response[i].data.name = getSensorById(config.domoticzService.sensors, response[i].data.id).name;
-                        service.sensorList.push(response[i].data);
+                        console.log('response2', response[i].data.name);
+                        service.domoticzSensorList.push(response[i].data);
                     }
                 }
             });
         }
 
-        service.refreshSensors = function() {
+        service.refreshDomoticzSensors = function() {
             return service.init().then(function(entries) {
                 return entries;
             });
         };
 
         service.getSensorsData = function() {
-            return service.sensorList;
+            return service.domoticzSensorList;
+            console.log("sensorList", service.domoticzSensorList);
         };
 
 

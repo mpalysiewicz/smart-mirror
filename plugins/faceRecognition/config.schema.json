@@ -2,29 +2,33 @@
     "schema": {
         "faceRecognition": {
             "type": "object",
-            "title": "Face Recognition Settings",
+            "title": "Face Recognitation Settings",
             "properties": {
-                "emotionKey": {
-                    "type": "string",
-                    "title": "emotion Key"
-                },
                 "faceKey": {
                     "type": "string",
-                    "title": "face Key"
+                    "title": "Face Recognitation Key"
+                },
+                "emotionKey": {
+                    "type": "string",
+                    "title": "Emotion Recognitation Key"
                 },
                 "faceListId": {
                     "type": "string",
-                    "title": "Face list id"
-                }               
+                    "title": "Face List ID"
+                },
+                "refreshInterval": {
+                    "type": "integer",
+                    "title": "Refresh Interval for Face Recognitation (seconds)",
+                    "default": 10
+                }
             }
         }
     },
     "form": [
         {
-            "type": "fieldset",
             "key": "faceRecognition",
-            "expandable": true,
-            "order":0
+            "type": "fieldset",
+            "expandable": true
         }
     ]
 }
