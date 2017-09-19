@@ -199,6 +199,11 @@
             "voice": "SoundCloud (play)(resume)",
             "description": "Resumes playback"
         },
+        "recognize_me":{
+          "text": "Rozpoznaj mnie",
+          "voice": "Rozpoznaj mnie",
+          "description": "Rozpoznaje osobę przed kamerą"
+        },
         "add_person": {
             "text": "Dodaj osobę ________",
             "voice": "Dodaj osobę *name",

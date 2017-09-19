@@ -14,8 +14,8 @@ function Face($scope, FaceRecognitionService, SpeechService, AutoSleepService, $
     };
 
 
-    refreshFaceRecognition();
-    $interval(refreshFaceRecognition, config.faceRecognition.refreshInterval * 1000 || 1800000)
+    //refreshFaceRecognition();
+    //$interval(refreshFaceRecognition, config.faceRecognition.refreshInterval * 1000 || 1800000)
         //add person
     SpeechService.addCommand('add_person', function (name) {
         FaceRecognitionService.addPerson(name).then(function (faceId) {

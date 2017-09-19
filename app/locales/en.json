@@ -180,6 +180,11 @@
             "voice": "SoundCloud replay",
             "description": "Replays the current song on SoundCloud."
         },
+        "recognize_me":{
+          "text": "Recognize me",
+          "voice": "Recognize me",
+          "description": "Recognize prson"
+        },
         "light_action": {
             "text": "Turn (state) light(s) (action)",
             "voice": "(turn) (the) :state (the) light(s) *action",
