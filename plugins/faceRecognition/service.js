@@ -36,12 +36,12 @@
                 then(getFaceName);
         };
 
-        service.recognizeEmotion = function () {
-            return this.init().
-                then(takeSnapshot).
-                then(detectEmotion).
-                then(getEmotionName);
-        };
+        // service.recognizeEmotion = function () {
+        //     return this.init().
+        //         then(takeSnapshot).
+        //         then(detectEmotion).
+        //         then(getEmotionName);
+        // };
 
         service.addPerson = function (name) {
             return this.init().
@@ -95,22 +95,22 @@
             });
         };
 
-        function detectEmotion(snapshot) {
-            return $http({
-                url: 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
-                method: 'post',
-                data: snapshot,
-                headers: {
-                    "Content-Type": "application/octet-stream",
-                    "Ocp-Apim-Subscription-Key": config.faceRecognition.emotionKey
-                }
-            }).then(function mySucces(response) {
-                console.log(response);
-                return response.data[0].scores;
-            }, function myError(response) {
-                console.log(response);
-            });
-        };
+        // function detectEmotion(snapshot) {
+        //     return $http({
+        //         url: 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
+        //         method: 'post',
+        //         data: snapshot,
+        //         headers: {
+        //             "Content-Type": "application/octet-stream",
+        //             "Ocp-Apim-Subscription-Key": config.faceRecognition.emotionKey
+        //         }
+        //     }).then(function mySucces(response) {
+        //         console.log(response);
+        //         return response.data[0].scores;
+        //     }, function myError(response) {
+        //         console.log(response);
+        //     });
+        // };
 
         function getEmotionName(scores) {
             console.log(scores);
